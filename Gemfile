@@ -68,3 +68,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem 'redis'
+gem 'sidekiq'
+gem 'foreman', '~> 0.87.2'

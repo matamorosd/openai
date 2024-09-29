@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "chats#index"
+  root "chats#new"
 
+  resources :chats do
+    resources :messages
+  end
 end

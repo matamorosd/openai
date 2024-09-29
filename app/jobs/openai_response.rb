@@ -26,8 +26,8 @@ class OpenaiResponse < ActiveJob::Base
       )
       client.chat(
         parameters: {
-            model: "llama3.1", # Required.
-            messages: [{ role: "user", content: "Hello!"}], # Required.
+            model: "llama3.1",
+            messages: @chat.message_hashes,
             temperature: 0.7,
             stream: proc do |chunk, _bytesize|
                 print chunk.dig("choices", 0, "delta", "content")

@@ -26,3 +26,17 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
+// frontend/entrypoints/application.js
+
+// Import Turbo and Stimulus
+import { Turbo } from "@hotwired/turbo-rails"
+import { Application } from "@hotwired/stimulus"
+import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+
+// Initialize Stimulus
+const application = Application.start()
+const context = require.context("../controllers", true, /\.js$/)
+application.load(definitionsFromContext(context))
+
+// Export Turbo for global usage
+window.Turbo = Turbo

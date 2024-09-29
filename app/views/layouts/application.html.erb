@@ -6,8 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= vite_stylesheet_tag "application", "data-turbo-track": "reload" %>
     <%= vite_client_tag %>
+    <%= vite_stylesheet_tag "application", "data-turbo-track": "reload" %>
     <%= vite_javascript_tag 'application' %>
     <!--
       If using a TypeScript entrypoint file:
@@ -24,6 +24,9 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <body class="bg-blue-100 text-center p-10">
+      <h1 class="text-4xl font-bold text-blue-600">¡TailwindCSS está funcionando!</h1>
+      <%= yield %>
+    </body>
   </body>
 </html>

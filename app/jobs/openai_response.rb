@@ -9,17 +9,30 @@ class OpenaiResponse < ActiveJob::Base
   private
 
     def call_openai
-      client = OpenAI::Client
-        .new(access_token: Rails.application.credentials.openai_access_token, log_errors: true)
+      # client = OpenAI::Client
+      #   .new(access_token: Rails.application.credentials.openai_access_token, log_errors: true)
 
+      # client.chat(
+      #   parameters: {
+      #     model: "gpt-3.5-turbo",
+      #     messages: @chat.message_hashes,
+      #     temperature: 0.8,
+      #     stream: stream_proc
+      #   }
+      # )
+      # 
+      client = OpenAI::Client.new(
+        uri_base: "http://localhost:11434"
+      )
       client.chat(
         parameters: {
-          model: "gpt-3.5-turbo",
-          messages: @chat.message_hashes,
-          temperature: 0.8,
-          stream: stream_proc
-        }
-      )
+            model: "llama3.1", # Required.
+            messages: [{ role: "user", content: "Hello!"}], # Required.
+            temperature: 0.7,
+            stream: proc do |chunk, _bytesize|
+                print chunk.dig("choices", 0, "delta", "content")
+            end
+        })
 
     end
 

@@ -76,3 +76,4 @@ gem 'devise', '~> 4.9', '>= 4.9.3'
 gem 'omniauth-google-oauth2', '~> 1.2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0', '>= 1.0.2'
 gem 'vite_rails'
+gem "ruby-openai"

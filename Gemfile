@@ -72,3 +72,4 @@ end
 gem 'redis'
 gem 'sidekiq'
 gem 'foreman', '~> 0.87.2'
+gem 'devise', '~> 4.9', '>= 4.9.3'

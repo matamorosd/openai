@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
       message_params.merge(chat: @chat, role: "user")
     )
 
-    OpenaiResponse.perform_later(@chat)
+    OpenaiResponse.perform_now(@chat)
 
     respond_to(&:turbo_stream)
   end

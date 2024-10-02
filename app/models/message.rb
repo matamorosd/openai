@@ -13,7 +13,7 @@ class Message < ApplicationRecord
   private
 
     def broadcast_created
-      broadcast_append_later_to(
+      broadcast_append_to(
         :chat_messages,
         partial: "messages/message",
         locals: { message: self },
